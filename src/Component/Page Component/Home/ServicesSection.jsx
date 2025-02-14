@@ -26,8 +26,8 @@ function ServicesSection() {
     };
 
     return (
-        <div className='h-full w-full bg-gray-100 flex justify-center py-12 px-4'>
-            <div className='bg-white w-9/12 flex flex-col gap-6 shadow-lg rounded-lg p-8'>
+        <div className='h-full w-full  flex justify-center py-12 px-4'>
+            <div className='bg-white w-11/12 flex flex-col gap-6  rounded-lg p-8'>
                 <div className='mb-4'>
                     <h2 className='text-2xl font-bold text-gray-800'>Services Section</h2>
                     <p className='text-gray-600 text-sm'>Title, SubTitle, Description, and Icons</p>

@@ -8,7 +8,7 @@ import BlogSection from '../Component/Page Component/Home/BlogSection'
 
 function Home() {
   return (
-    <div className='flex flex-col gap-10'>
+    <div className='relative flex flex-col gap-10'>
       
       <AboutSection/>
       <ServicesSection/>

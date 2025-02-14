@@ -8,8 +8,8 @@ function BlogSection() {
     ];
 
     return (
-        <div className='h-full w-full bg-gray-100 flex justify-center py-10'>
-            <div className='bg-white w-9/12 mx-auto flex flex-col gap-6 shadow-lg rounded-lg p-8'>
+        <div className='h-full w-full  flex justify-center py-10'>
+            <div className='bg-white w-11/12 mx-auto flex flex-col gap-6 rounded-lg p-8'>
    
                 <div className='flex flex-col gap-2'>
                     
@@ -39,6 +39,7 @@ function BlogSection() {
                                 <input
                                     type='file'
                                     id='imageUpload'
+                                    
                                     className='hidden'
                                     accept='.jpg,.jpeg,.png'
                                     onChange={(e) => setFieldValue('Image', e.target.files[0])}

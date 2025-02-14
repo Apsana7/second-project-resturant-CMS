@@ -15,8 +15,8 @@ function ChefDetail() {
     ];
 
     return (
-        <div className='min-h-screen flex justify-center bg-gray-100 py-10'>
-            <div className='bg-white w-9/12 mx-auto flex flex-col gap-6 shadow-lg rounded-lg p-8'>
+        <div className='min-h-screen flex justify-center  py-10'>
+            <div className='bg-white w-11/12 mx-auto flex flex-col gap-6  rounded-lg p-8'>
                 <div className='mb-4'>
                     <h2 className='text-2xl font-semibold text-gray-900'>Chef's Info</h2>
                     <p className='text-gray-600'>Upload image, enter name, post, and social links</p>

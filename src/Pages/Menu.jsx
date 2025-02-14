@@ -1,6 +1,12 @@
 import React from 'react'
 
 function Menu() {
+  const menuItem = [
+    {
+      label:"Image",
+      name:""
+    }
+  ]
   return (
     <div className='h-full w-full bg-gray-50 flex justify-center py-12 px-4'>
             <div className='bg-white w-9/12 flex flex-col gap-6 shadow-xl rounded-lg p-8'>
