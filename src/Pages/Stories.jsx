@@ -1,9 +1,10 @@
 import React from 'react'
+import BlogSection from '../Component/Page Component/Blog/BlogSection'
 
 function Stories() {
   return (
     <div>
-      Stories
+      <BlogSection/>
     </div>
   )
 }

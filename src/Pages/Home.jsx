@@ -1,20 +1,17 @@
 import React from 'react'
-import AboutSection from '../Component/Page Component/Home/AboutSection'
-import ServicesSection from '../Component/Page Component/Home/ServicesSection'
-import ChefDetail from '../Component/Page Component/Home/ChefDetail'
-import TestimonySec from '../Component/Page Component/Home/TestimonySec'
-import BlogSection from '../Component/Page Component/Home/BlogSection'
+import ChefDetail from '../Component/Page Component/Chef/ChefDetail'
+import TestimonySec from '../Component/Page Component/Testimony/TestimonySec'
+import BlogSection from '../Component/Page Component/Blog/BlogSection'
 
 
 function Home() {
   return (
-    <div className='relative flex flex-col gap-10'>
+    <div className='relative w-full'>
       
-      <AboutSection/>
-      <ServicesSection/>
+      
       <ChefDetail/>
-      <TestimonySec/>
-      <BlogSection/>
+      {/* <TestimonySec/> */}
+      {/* <BlogSection/> */}
     
     </div>
   )

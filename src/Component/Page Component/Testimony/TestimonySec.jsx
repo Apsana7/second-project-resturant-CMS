@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 
 function TestimonySec() {
-  const [data,setData]= useState([])
+ 
   const header = [
     {
         title: 'Title'
@@ -55,38 +55,7 @@ function TestimonySec() {
               <button className='w-fit h-fit p-2 bg-green-600 rounded-lg cursor-pointer text-white'>Save Changes</button>
             </div>
 
-            <table>
-              <thead>
-                <tr>
-                  {
-                    header.map((val,i)=>{
-                      return(
-                        <th key={i} className='border-r px-2 border-black bg-gray-400'>
-                            {val.title}
-                        </th>
-                      )
-                    })
-                  }
-                </tr>
-              </thead>
-              <tbody>
-                  {
-                    data.map((val,i)=>(
-                      <tr key={i} className='border-b border-black hover:bg-gray-100'>
-                        <td className='border-r border-black bg-gray-200 px-2'>{val.Title}</td>
-                        <td className='border-r border-black bg-gray-200 px-2'>{val.SubTitle}</td>
-                        <td className='flex flex-row gap-2  justify-center items-center'>
-                                <button type="submit" className='border border-black bg-green-700 text-white py-3 px-3 rounded-lg '
-                                 >Edit</button>
-                                <button type="submit" className='border border-black bg-red-600 text-white  rounded-lg py-3 px-3'
-                                 >Delete</button>
-
-                            </td>
-                      </tr>
-                    ))
-                  }
-              </tbody>
-            </table>
+          
 
 
              
