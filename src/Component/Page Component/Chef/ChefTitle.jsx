@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 
-function MenuTitles() {
+function ChefTitle() {
   const info = [
     { label: "Title", name: "Title", type: "text", placeholder: "Enter Title" },
     { label: "Sub-Title", name: "SubTitle", type: "text", placeholder: "Enter Sub Title" }
@@ -12,8 +12,8 @@ function MenuTitles() {
       <div className='  mx-auto grid grid-cols-6 gap-6  w-full '>
 
         <div className=''>
-          <h1 className='text-xl font-bold'>Menu Section</h1>
-          <p className='text-gray-700 w-full'>Title,SubTitle,Image,<br />ImageTitle,Description,<br />Price</p>
+          <h1 className='text-xl font-bold'>Master Chefs</h1>
+          <p className='text-gray-700 w-full'>Title,SubTitle,Image,<br />ChefName,ChefPost<br />Social Sites</p>
         </div>
 
         <div className='col-span-5'>
@@ -42,5 +42,5 @@ function MenuTitles() {
   )
 }
 
-export default MenuTitles
+export default ChefTitle
 

@@ -1,15 +1,17 @@
 import React from 'react'
-import ChefDetail from '../Component/Page Component/Chef/ChefDetail'
-import TestimonySec from '../Component/Page Component/Testimony/TestimonySec'
-import BlogSection from '../Component/Page Component/Blog/BlogSection'
+import MenuTitles from '../Component/Page Component/Menu/MenuTitles'
+import ChefTitle from '../Component/Page Component/Chef/ChefTitle'
 
 
 function Home() {
   return (
     <div className='relative w-full'>
       
+ 
+      <MenuTitles/>
+      <ChefTitle/>
+
       
-      <ChefDetail/>
       {/* <TestimonySec/> */}
       {/* <BlogSection/> */}
     
