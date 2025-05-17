@@ -1,36 +1,15 @@
 import React, { useState } from 'react';
-import MenuDeletePopUp from './MenuDeletePopUp';
-import EditPopUp from './EditPopUp';
 
-function MenuSectionTable() {
-    const [deletes, setDeletes] = useState(null);
-    const [edit, setEdit] = useState(false);
-
+function ChefTable() {
     const [info, setInfo] = useState([]);
+    const [edit, setEdit] = useState(false);
+    
 
-    const header = ["Image", "Item Name", "Description", "Price", "Action"];
+    const header = ["Title", "SubTitle", "Chef'sName", "Chef'sPost","SocialMediaLinks", "Action"];
 
     return (
-        <div className='flex justify-center p-6'>
-
-      {deletes && (
-        <div>
-          <MenuDeletePopUp setDeletes={setDeletes} />
-        </div>
-      )}
-      {
-        edit && (
-            <div>
-                <EditPopUp 
-                blured= {()=>{
-                    setEdit(false)
-                }}
-                setEdit={setEdit}/>
-            </div>
-        )
-      }
-
-            <div className='w-11/12 md:w-4/5 lg:w-3/4 overflow-x-auto shadow-lg rounded-lg border border-gray-300 bg-white'>
+        <div className='flex  w-9/12 justify-center ml-48'>
+            <div className='w-full overflow-x-auto shadow-lg rounded-lg border border-gray-300 bg-white'>
                 <table className='w-full text-center border-collapse'>
                  
                     <thead className='bg-gray-800 text-white text-sm uppercase tracking-wide'>
@@ -56,14 +35,14 @@ function MenuSectionTable() {
                             <td className='px-4 py-3 border border-gray-300'>Sample Item</td>
                             <td className='px-4 py-3 border border-gray-300'>Delicious food item</td>
                             <td className='px-4 py-3 border border-gray-300'>$12.99</td>
+                            <td className='px-4 py-3 border border-gray-300'>$12.99</td>
+                            
                     
                             <td className='px-2 py-3 flex items-center justify-center gap-4'>
-                                <button className='px-3 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition' onClick={() => setEdit(!edit)}
-                                    >
+                                <button className='px-3 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition'>
                                     Edit
                                 </button>
-                                <button className='px-3 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition'  onClick={() => setDeletes(!deletes)}
-                                >
+                                <button className='px-3 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition'>
                                     Delete
                                 </button>
                             </td>
@@ -75,4 +54,4 @@ function MenuSectionTable() {
     );
 }
 
-export default MenuSectionTable;
+export default ChefTable;

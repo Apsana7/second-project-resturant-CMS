@@ -1,38 +1,37 @@
 import React, { useState } from 'react';
-import MenuDeletePopUp from './MenuDeletePopUp';
-import EditPopUp from './EditPopUp';
+import TestimonyDeletePopUp from './TestimonyDeletePopUp';
+import TestimonyEditPopUp from './TestimonyEditPopUp';
 
-function MenuSectionTable() {
-    const [deletes, setDeletes] = useState(null);
-    const [edit, setEdit] = useState(false);
-
+function TestimonyTable() {
     const [info, setInfo] = useState([]);
+    const [deletes, setDeletes] = useState(null);
+    const [edit, setEdit] = useState(false)
 
-    const header = ["Image", "Item Name", "Description", "Price", "Action"];
+
+    const header = ["Image", "Name", "Description", "Post", "Action"];
 
     return (
-        <div className='flex justify-center p-6'>
+        <div className='flex   ml-16 p-6 w-[1150px] '>
 
-      {deletes && (
-        <div>
-          <MenuDeletePopUp setDeletes={setDeletes} />
-        </div>
-      )}
-      {
-        edit && (
-            <div>
-                <EditPopUp 
-                blured= {()=>{
-                    setEdit(false)
-                }}
-                setEdit={setEdit}/>
-            </div>
-        )
-      }
+            {deletes && (
+                <div>
+                    <TestimonyDeletePopUp setDeletes={setDeletes} />
+                </div>
+            )}
 
-            <div className='w-11/12 md:w-4/5 lg:w-3/4 overflow-x-auto shadow-lg rounded-lg border border-gray-300 bg-white'>
-                <table className='w-full text-center border-collapse'>
-                 
+            {edit && (
+                <div>
+                    <TestimonyEditPopUp
+                        blured={() => {
+                            setEdit(false)
+                        }}
+                        />
+                </div>
+            )}
+
+            <div className='w-10/12  mx-auto overflow-x-auto shadow-lg rounded-lg border border-gray-300 bg-white'>
+                <table className='w-full  text-center border-collapse'>
+
                     <thead className='bg-gray-800 text-white text-sm uppercase tracking-wide'>
                         <tr>
                             {header.map((val, i) => (
@@ -43,27 +42,25 @@ function MenuSectionTable() {
                         </tr>
                     </thead>
 
-                 
+
                     <tbody className='text-gray-900 text-sm text-center'>
                         <tr className='border border-gray-300 hover:bg-gray-100 transition'>
                             <td className='px-4 py-3 border border-gray-300'>
-                                <img 
-                                    src="https://via.placeholder.com/50" 
-                                    alt="Food Item" 
+                                <img
+                                    src="https://via.placeholder.com/50"
+                                    alt="Food Item"
                                     className="h-12 w-12 object-cover rounded-md"
                                 />
                             </td>
                             <td className='px-4 py-3 border border-gray-300'>Sample Item</td>
                             <td className='px-4 py-3 border border-gray-300'>Delicious food item</td>
                             <td className='px-4 py-3 border border-gray-300'>$12.99</td>
-                    
+
                             <td className='px-2 py-3 flex items-center justify-center gap-4'>
-                                <button className='px-3 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition' onClick={() => setEdit(!edit)}
-                                    >
+                                <button className='px-3 py-2 bg-green-600 text-white text-sm rounded-md hover:bg-green-700 transition' onClick={() => setEdit(!edit)}>
                                     Edit
                                 </button>
-                                <button className='px-3 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition'  onClick={() => setDeletes(!deletes)}
-                                >
+                                <button className='px-3 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition' onClick={() => setDeletes(!deletes)}  >
                                     Delete
                                 </button>
                             </td>
@@ -75,4 +72,4 @@ function MenuSectionTable() {
     );
 }
 
-export default MenuSectionTable;
+export default TestimonyTable;

@@ -1,80 +1,108 @@
-import React from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { placeholder } from 'jodit/esm/plugins/placeholder/placeholder';
+import JoditEditor from 'jodit-react';
+
 
 function BlogSection() {
-    const Info = [
-        { label: "MainTitle", name: "MainTitle", type: "text", placeholder: "Enter MainTitle " },
+     const editor = useRef(null);
+      const [content, setContent] = useState('');
+
+    const info = [
+        { label: "Title", name: "Title", type: "text", placeholder: "Enter Title " },
         { label: "SubTitle", name: "SubTitle", type: "text", placeholder: "Enter sub title" },
-
-        { label: "upload", name: "upload", type: "file", placeholder: "Enter sub title" },
-
         { label: "Time", name: "Time", type: "date", placeholder: "Enter time" },
-        { label: "Title", name: "Title", type: "text", placeholder: "Enter Title" }
+        { label:"Post", name:"Post", type:"text", placeholder:"Enter Position"},
+        { label: "Description", name: "Description", type: "text", placeholder: "Enter Description" },
+        { label: "Image", name: "Image", type: "file", placeholder: "Upload Image" }
+
     ];
+   
+
+     const config = useMemo(() => ({
+        readonly: false,
+        placeholder: 'Start typing...'
+      }), []);
 
     return (
-        <div className='h-full w-full  flex justify-center py-10'>
-            <div className='bg-white w-11/12 mx-auto flex flex-col gap-6 rounded-lg p-8'>
-
-                <div className='flex flex-col gap-2'>
-
-                    <div className='text-xl font-semibold'>Blog Section</div>
-                    <p className='text-gray-700'>Title, Subtitle, Image, Time</p>
-                </div>
-
-
-                <Formik
-                    initialValues={{ MainTitle:"",SubTitle:"",  Time: "", Title: "" }}
-                    onSubmit={(values) => console.log(values)}
-                >
-                    {({ setFieldValue, values }) => (
-                        <Form className='flex flex-col gap-6'>
-
-
-
-                            {Info.map((val, i) => {
-           if(val.type!=='file'){
-            return <div key={i} className='flex flex-col gap-2'>
-            <label className='text-lg font-medium text-gray-700'>{val.label} <span className="text-red-500">*</span></label>
-            <Field
-                name={val.name}
-                type={val.type}
-                placeholder={val.placeholder}
-                className='border-2 border-gray-300 p-2 rounded-lg ' />
-        </div>
-           }else{
-
-           return <div className='flex flex-col items-center'>
-            <label htmlFor='imageUpload' className='cursor-pointer'>
-                {values.Image ? (
-                    <img
-                        src={URL.createObjectURL(values.Image)}
-                        className='h-32 w-32 object-cover  border-2 border-gray-300'
-                    />
-                ) : (
-                    <div className='flex items-center justify-center bg-gray-200 h-32 w-32 border-2 border-gray-300 text-gray-500'>
-                        Upload Image
-                    </div>
-                )}
-            </label>
-            <input
-                type='file'
-                id='imageUpload'
-                className='hidden'
-                accept='.jpg,.jpeg,.png'
-                onChange={(e) => setFieldValue('Image', e.target.files[0])}
-            />
-        </div>
-           }
-})}
-
-
-                        </Form>
-                    )}
-                </Formik>
+        <div className='w-11/12 flex justify-center py-10'>
+        <div className='mx-auto grid grid-cols-6 gap-6 w-full'>
+            <div className='flex flex-col gap-2'>
+                <h1 className='font-bold text-xl'>Recent Blogs</h1>
+                <p className='text-gray-500'>Title, SubTitle,Image<br/>,Time,Post,Description</p>
             </div>
-        </div>
+            <Formik initialValues={{Title:"", SubTile:"",Image:"", Time:"",Post:"", Description:""}}
+          onSubmit={(values) => console.log(values)}
+          >
+         {({ setFieldValue , values}) => (
+            <Form className='flex flex-col gap-4 col-span-5 w-full'>
+            {info.map((val, i) => {
+                if (val.name === "Description") {
+                    return (
+                        <div key={i} className='flex flex-col gap-1 w-full'>
+                            <label className='text-lg font-medium text-gray-700'>
+                                Description <span className='text-red-600'>*</span>
+                            </label>
+                            <JoditEditor
+                                ref={editor}
+                                value={content}
+                                config={config}
+                                tabIndex={1}
+                                onBlur={(newContent) => {
+                                    setContent(newContent);
+                                    setFieldValue("Description", newContent);
+                                }}
+                                className='border border-gray-300 rounded-md'
+                            />
+                        </div>
+                    );
+                } else if (val.name === "Image") {
+                    return (
+                      <div className='flex flex-col items-center'>
+                      <label htmlFor='imageUpload' className='cursor-pointer'>
+                          {values.Image ? (
+                              <img
+                                  src={URL.createObjectURL(values.Image)}
+                                  className='h-32 w-32 object-cover  border-2 border-gray-300'
+                              />
+                          ) : (
+                              <div className='flex items-center justify-center bg-gray-200 h-32 w-32 border-2 border-gray-300 text-gray-500'>
+                                  Upload Image
+                              </div>
+                          )}
+                      </label>
+                      <input
+                          type='file'
+                          id='imageUpload'
+                          className='hidden'
+                          accept='.jpg,.jpeg,.png'
+                          onChange={(e) => setFieldValue('Image', e.target.files[0])}
+                      />
+                  </div>
+                    );
+                } else {
+                    return (
+                        <div key={i}>
+                            <div className='text-lg font-medium text-gray-800'>
+                                {val.label} <span className="text-red-500">*</span>
+                            </div>
+                            <Field
+                                name={val.name}
+                                type={val.type}
+                                placeholder={val.placeholder}
+                                className='border border-gray-400 p-2 rounded-md w-full'
+                            />
+                        </div>
+                    );
+                }
+            })}
+        <button className='w-fit h-fit p-3 bg-green-600 text-white rounded-xl cursor-pointer hover:bg-green-800 '>Save Changes</button>
+
+        </Form>
+         )}
+           </Formik>
+
+            </div>
+       </div>
     );
 }
 

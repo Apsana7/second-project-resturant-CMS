@@ -7,6 +7,7 @@ import Stories from "./Pages/Stories"
 import Contact from "./Pages/Contact"
 import BookATable from "./Pages/BookATable"
 import Layout from "./Hoc/Layout"
+import TestimonySec from "./Component/Page Component/Testimony/TestimonySec"
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
          <Route path='/Stories' element={<Stories/>}></Route>
          <Route path='/Contact' element={<Contact/>}></Route>
          <Route path='/BookATable' element={<BookATable/>}></Route>
+         <Route path='/TestimonySec' element={<TestimonySec/>}></Route>
+
          </Route>
       </Routes>
     </>
